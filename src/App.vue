@@ -11,12 +11,29 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width:500px) {
+    #main-content {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width:501px) {
+    #main-content {
+        width: 500px;
+        height: 100%;
+        margin-left: calc(50% - 250px)
+    }
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 0;
 }
 </style>

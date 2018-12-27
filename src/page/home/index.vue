@@ -1,10 +1,306 @@
 <template>
-    <div>
-        <p>This is home page.</p>
+    <div id="main-content">
+        <div  id="header">
+            <div class="logo">
+                <a asp-page="/Index">
+                    <span class="iconfont icon-shouye"></span>
+                </a>
+            </div>
+            <div class="search">
+                <form id="search-form" asp-page="/Index" method="get">
+                    <input type="hidden" name="tab" value="@currnetTab" />
+                    <input name="keywords" placeholder="请输入关键词搜索" class="search-keyword" />
+                    <span class="iconfont icon-sousuo"></span>
+                </form>
+            </div>
+        </div>
+        <div id="body">
+
+        </div>
     </div>
 </template>
 <script>
 export default {
-    
+    name:"home",
+    components:{},
 }
 </script>
+
+<style>
+
+
+#main-content {
+    position: absolute;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: dimgray;
+}
+
+#header {
+    width: 100%;
+    height: 60px;
+    background-color: #607D8B;
+}
+
+    #header .logo {
+        display: inline-block;
+    }
+
+        #header .logo .icon-shouye {
+            line-height: 60px;
+            width: 60px;
+            font-size: 30px;
+            color: white;
+            margin-left: 15px;
+        }
+
+    #header .search {
+        display: inline-block;
+        margin-left: 15px;
+        width: 80%;
+        background-color: white;
+        line-height: 30px;
+        margin-top: 16px;
+        vertical-align: top;
+        border-radius: 15px;
+    }
+
+        #header .search .search-keyword {
+            width: 88%;
+            margin-left: 5px;
+            border: none;
+            outline: none;
+        }
+
+#body {
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow-y: scroll;
+}
+
+.movie {
+    position: relative;
+    display: inline-block;
+    width: 32%;
+    height: 30%;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+    .movie .poster {
+        width: 100%;
+        height: 100%;
+    }
+
+    .movie .title {
+        position: absolute;
+        font-size: 12px;
+        bottom: 0;
+        background-color: black;
+        opacity: 0.8;
+        width: 97%;
+        height: 20px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+
+        .movie .title span {
+            color: white;
+            padding-left: 10px;
+            vertical-align: middle;
+        }
+
+#footer {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0;
+    background-color: #f3eded;
+}
+
+    #footer ul.nav {
+        width: 100%;
+    }
+
+        #footer ul.nav li {
+            display: inline-block;
+            width: 32%;
+            line-height: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: dimgray;
+        }
+
+            #footer ul.nav li.selected {
+                background-color: #607D8B;
+                border-radius: 5px;
+            }
+
+                #footer ul.nav li.selected a {
+                    color: white;
+                }
+
+            #footer ul.nav li .iconfont {
+                /* color: black; */
+                font-size: 20px;
+            }
+
+.movie-detail {
+    width: 100%;
+}
+
+    .movie-detail .movie-title {
+        padding: 5px;
+        background-color: #607D8B;
+        color: white;
+        margin-top: 5px;
+    }
+
+    .movie-detail .movie-area {
+        position: relative;
+        height: 200px;
+        text-align: center;
+        background-color: black;
+        border-radius: 5px;
+        margin-top: 3px;
+    }
+
+        .movie-detail .movie-area img {
+            height: 200px;
+        }
+
+        .movie-detail .movie-area .icon-bofang {
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            font-size: 70px;
+            color: white;
+        }
+
+    .movie-detail .movie-pay-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 100;
+    }
+
+        .movie-detail .movie-pay-mask .icon-guanbi {
+            font-size: 35px;
+            color: white;
+            float: right;
+            font-weight: bold;
+        }
+
+    .movie-detail .movie-pay {
+        width: 100%;
+        margin-top: 60px;
+        background-color: #292b29;
+        color: white;
+        z-index: 101;
+        text-align: center;
+    }
+
+        .movie-detail .movie-pay .pay-info {
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .movie-detail .movie-pay .pay-qr-code {
+            margin-top: 10px;
+        }
+
+            .movie-detail .movie-pay .pay-qr-code img {
+                width: 80%;
+                border-radius: 5px;
+            }
+
+        .movie-detail .movie-pay .finished-pay {
+            margin-top: 5px;
+            padding-bottom: 10px;
+            text-decoration: underline;
+            font-size: 18px;
+        }
+
+    .movie-detail .movie-desc {
+        margin-top: 3px;
+        background-color: #f3eded;
+        overflow: hidden;
+    }
+
+        .movie-detail .movie-desc .desc-head {
+            background-color: #607D8B;
+            color: white;
+            padding: 5px;
+        }
+
+        .movie-detail .movie-desc .desc-content {
+            padding: 5px 10px;
+        }
+
+.movie-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pay-info-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+    .pay-info-mask .icon-guanbi {
+        font-size: 35px;
+        color: white;
+        float: right;
+        font-weight: bold;
+    }
+
+    .pay-info-mask .movie-pay {
+        width: 100%;
+        margin-top: 60px;
+        background-color: #292b29;
+        color: white;
+        z-index: 101;
+        text-align: center;
+    }
+
+        .pay-info-mask .movie-pay .pay-info {
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .pay-info-mask .movie-pay .pay-qr-code {
+            margin-top: 10px;
+        }
+
+            .pay-info-mask .movie-pay .pay-qr-code img {
+                width: 80%;
+                border-radius: 5px;
+            }
+
+        .pay-info-mask .movie-pay .finished-pay {
+            margin-top: 5px;
+            padding-bottom: 10px;
+            text-decoration: underline;
+            font-size: 18px;
+        }
+
+</style>
+
